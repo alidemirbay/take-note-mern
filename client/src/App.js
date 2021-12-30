@@ -1,27 +1,27 @@
-import { Route, Switch, Link } from 'react-router-dom'
-import { NoteList } from './components/TodoList'
-import { CreateNote } from './components/CreateTodo'
-import { EditNote } from './components/EditTodo'
+import { Route, Link, Routes } from 'react-router-dom'
+import { NoteList } from './components/NoteList'
+import { CreateNote } from './components/CreateNote'
+import { EditNote } from './components/EditNote'
 
 
 function App() {
   return (
     <div>
-      <nav className="navbar bg-light navbar-expand-lg navbar-light">
+      <nav className="navbar bg-success navbar-expand-lg navbar-light">
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
-            <Link to="/" className="nav-link">Todos</Link>
+            <Link to="/" className="nav-link">Notes</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/create" className="nav-link">Create Todo</Link>
+            <Link to="/create" className="nav-link">Create Note</Link>
           </li>
         </ul>
       </nav>
-      <Switch>
-        <Route exact path="/" component={NoteList} />
-        <Route path="/edit/:id" component={EditNote} />
-        <Route path="/create" component={CreateNote} />
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<NoteList />} />
+        <Route path="/edit/:id" element={<EditNote />} />
+        <Route path="/create" element={<CreateNote />} />
+      </Routes>
     </div>
   );
 }
